@@ -9,7 +9,7 @@ import { Router } from '@angular/router'
       <br />
       <br />
       <button type="submit" class="btn btn-primary">Save</button>
-      <button type="button" class="btn btn-default (click)=cancel() ">Cancel</button>
+      <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
     </div>
   `,
 })
@@ -17,6 +17,6 @@ export class ProfileComponent {
   constructor(private router: Router) { }
 
   cancel() {
-    this.router.navigate(['/events'])
+    this.router.navigate(['events'])
   }
 }

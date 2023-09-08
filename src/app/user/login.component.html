@@ -1,0 +1,26 @@
+<h1>Login</h1>
+<hr>
+<div class="col-md-4">
+  <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)" autocomplete="off" novalidate>
+    <div class="form-group" >
+      <label for="userName">User Name:</label>
+      <div>
+        <div *ngIf="userName.hasError('required')">Name is required.</div>
+        <div *ngIf="userName.hasError('minlength')">Name should be at least 3 characters long.</div>
+      </div>
+      <input #userName="ngModel" (ngModel)="userName" name="userName" id="userName" type="text" class="form-control" placeholder="User Name..." required minlength="3"/>
+      
+    </div>
+    <div class="form-group" >
+      <label for="password">Password:</label>
+      <div>
+        <div *ngIf="password.hasError('required')">Password is required.</div>
+        <div *ngIf="password.hasError('minlength')">Password should be at least 3 characters long.</div>
+      </div>
+      <input #password="ngModel" (ngModel)="password" name="password" required id="password" type="password" class="form-control" placeholder="Password..." required minlength="3"/>
+    </div>
+        
+    <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
+    <button [routerLink]="['/events']" type="button" class="btn btn-default">Cancel</button>
+  </form>
+</div>
