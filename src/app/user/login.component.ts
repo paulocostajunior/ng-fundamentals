@@ -9,10 +9,6 @@ import { Router } from "@angular/router";
 export class LoginComponent {
     userName: any;
     password: any;
-    user: any = {
-        name: '',
-        email: ''
-      };
 
     constructor(private authService: AuthService, private router: Router) { 
 
@@ -22,9 +18,5 @@ export class LoginComponent {
         this.authService.loginUser(formValues.userName, formValues.password)
 
         this.router.navigate(['events'])
-    }
-
-    onSubmit() {
-        console.log(this.user);
     }
 }
