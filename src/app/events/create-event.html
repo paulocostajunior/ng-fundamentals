@@ -20,7 +20,7 @@
     <div class="form-group" [ngClass]="{'error':  price.invalid && price.touched}">
       <label for="eventPrice">Event Price:</label>
       <em *ngIf=" price.invalid && (price.touched)">Required</em>
-      <input #price="ngModel" (ngModel)="newEvent.price" name="price" required id="eventPrice" type="text" type="number" class="form-control" placeholder="event price..." />
+      <input #price="ngModel" (ngModel)="price" name="price" required id="eventPrice" type="text" type="number" class="form-control" placeholder="event price..." />
     </div>
     
     <div ngModelGroup="location">

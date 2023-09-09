@@ -15,17 +15,7 @@ import { EventService } from "./shared";
   `]
 })
 export class CreateEventComponent {
-    name: any
-    date: any
-    time: any
-    newEvent: any
-    address: any
-    city: any
-    country: any
-    onlineUrl: any
-    imageUrl: any
     isDirty: boolean = true
-    @ViewChild('newEventForm', { static: true }) newEventForm!: NgForm;
 
     constructor(private router: Router, private eventService: EventService) {
 
