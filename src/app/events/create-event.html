@@ -1,0 +1,57 @@
+<h1>New Event</h1>
+<hr>
+<div class="col-md-6">
+  <form #newEventForm="ngForm" (ngSubmit)="saveEvent(newEventForm.value)" autocomplete="off" novalidate>
+    <div class="form-group" [ngClass]="{'error': name.invalid && name.touched}">
+      <label for="eventName">Event Name:</label>
+      <em *ngIf="name.hasError('required') && (name.touched)">Required</em>
+      <input #name="ngModel" (ngModel)="name" name="name" required id="name" type="text" class="form-control" placeholder="Name of your event..."/>
+    </div>
+    <div class="form-group" [ngClass]="{'error': date.invalid && date.touched}">
+      <label for="eventDate">Event Date:</label>
+      <em *ngIf="date.invalid && (date.touched)">Required</em>
+      <input #date="ngModel" (ngModel)="date" name="date" required id="eventDate" type="text" class="form-control" placeholder="format (mm/dd/yyyy)..." />
+    </div>
+    <div class="form-group" [ngClass]="{'error': time.invalid && time.touched}">
+      <label for="eventTime">Event Time:</label>
+      <em *ngIf="time.invalid && (time.touched)">Required</em>
+      <input #time="ngModel" (ngModel)="time" name="time" required id="eventTime" type="text" class="form-control" placeholder="start and end time..." />
+    </div>
+    <div class="form-group" [ngClass]="{'error':  price.invalid && price.touched}">
+      <label for="eventPrice">Event Price:</label>
+      <em *ngIf=" price.invalid && (price.touched)">Required</em>
+      <input #price="ngModel" (ngModel)="newEvent.price" name="price" required id="eventPrice" type="text" type="number" class="form-control" placeholder="event price..." />
+    </div>
+    
+    <div ngModelGroup="location">
+    <div class="form-group">
+      <label for="address">Event Location:</label>
+      <input #address="ngModel" (ngModel)="address" name="address" id="address" type="text" class="form-control" placeholder="Address of event..." />
+    </div>
+        <div class="row">
+        <div class="col-md-6">
+            <input #city="ngModel" (ngModel)="city" name="city" id="city" type="text" class="form-control" placeholder="City..." />
+        </div>
+        <div class="col-md-6" >
+            <input #country="ngModel" (ngModel)="country" name="country" id="country" type="text" class="form-control" placeholder="Country..." />
+        </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+      <label for="onlineUrl">Online Url:</label>
+      <input #onlineUrl="ngModel" (ngModel)="onlineUrl" name="onlineUrl" id="onlineUrl" type="text" class="form-control" placeholder="Online Url..." />
+    </div>
+    <div class="form-group" [ngClass]="{'error':  imageUrl.invalid && imageUrl.touched}">
+      <label for="imageUrl">Image:</label>
+      <em *ngIf=" imageUrl.invalid && imageUrl.touched &&  imageUrl.hasError('required')">Required</em>
+      <em *ngIf=" imageUrl.invalid && imageUrl.touched  &&  imageUrl.hasError('pattern')">Must be a png or jpg url</em>
+      <input #imageUrl="ngModel" (ngModel)="imageUrl" name="imageUrl" required pattern=".*\/.*.(png|jpg)" id="imageUrl" type="text" class="form-control" placeholder="url of image..." />
+      <img [src]="imageUrl?.value"
+      *ngIf="imageUrl?.valid"/>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="button" [disabled]="newEventForm.invalid" class="btn btn-default" (click)="cancel()">Cancel</button>
+  </form>
+</div>

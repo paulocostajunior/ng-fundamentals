@@ -42,7 +42,7 @@ export class ProfileComponent implements OnInit{
     }
   }
 
-  validateFirstName() {
+  validateFirstName():boolean {
     if (this.firstName.invalid) {
       return false
     }
