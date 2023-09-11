@@ -8,7 +8,8 @@ import {
   CreateEventComponent,
   EventRouteActivator,
   EventListResolver,
-  CreateSessionComponent
+  CreateSessionComponent,
+  SessionListComponent
 } from './events/index';
 import { NavBarComponent } from './nav/navbar.component';
 import { ToastrService } from './common/toastr.service';
@@ -31,6 +32,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     EventsAppComponent,
     EventsListAppComponent,
     EventThumbnailComponent,
+    SessionListComponent,
     NavBarComponent,
     EventDetailsComponent,
     CreateEventComponent,
