@@ -20,6 +20,7 @@ import { EventsAppComponent } from './events-app.component';
 import { AuthService } from './user/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CollapsibleWellComponent } from './common/collapsible-well.component';
+import { DurationPipe } from './events/shared/duration.pipe';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { CollapsibleWellComponent } from './common/collapsible-well.component';
     CreateEventComponent,
     CreateSessionComponent,
     Error404Component,
-    CollapsibleWellComponent
+    CollapsibleWellComponent,
+    DurationPipe
   ],
   providers: [
     EventService,
