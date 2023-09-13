@@ -35,7 +35,7 @@ export class CreateSessionComponent {
             Validators.required, 
             Validators.maxLength(400), 
             restrictedWords(['foo', 'bar'])]
-        )
+            )
 
         this.newSessionForm = new FormGroup({
             name: this.name,
