@@ -11,7 +11,8 @@ import {
   CreateSessionComponent,
   SessionListComponent,
   UpvoteComponent,
-  VoterService
+  VoterService,
+  LocationValidator
 } from './events/index';
 import { NavBarComponent } from './nav/navbar.component';
 import { IToastr, TOASTR_TOKEN, JQ_TOKEN, CollapsibleWellComponent, SimpleModalComponent, ModalTriggerDirective } from './common/index';
@@ -47,7 +48,8 @@ let jQuery = (window as any)['$']
     DurationPipe,
     SimpleModalComponent,
     UpvoteComponent,
-    ModalTriggerDirective
+    ModalTriggerDirective,
+    LocationValidator
   ],
   providers: [
     EventService,
