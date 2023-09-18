@@ -23,6 +23,7 @@ import { EventsAppComponent } from './events-app.component';
 import { AuthService } from './user/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DurationPipe } from './events/shared/duration.pipe';
+import { HttpClientModule} from '@angular/common/http'
 
 let toastr: IToastr = (window as any)['toastr'];
 let jQuery = (window as any)['$']
@@ -32,6 +33,7 @@ let jQuery = (window as any)['$']
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
   declarations: [

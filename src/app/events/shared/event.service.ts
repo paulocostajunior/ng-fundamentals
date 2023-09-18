@@ -1,13 +1,25 @@
 import { EventEmitter, Injectable } from "@angular/core"
-import { Observable, Subject } from "rxjs"
+import { Observable, Subject, catchError, of } from "rxjs"
 import { IEvent, ISession } from "./event.model";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable()
 export class EventService {
+    private server = "http://localhost:3000/api/"
+
+    constructor(private http: HttpClient) {}
+
+    private handleError<T> (operation='operation', result?:T)
+    {
+        return (error: any): Observable<T> => {
+            console.error(error)
+            return of(result as T)
+        }
+    }
+
     getEvents():Observable<IEvent[]> {
-        let subject = new Subject<IEvent[]>()
-        setTimeout(() => { subject.next(EVENTS); subject.complete(); }, 100)
-        return subject
+        return this.http.get<IEvent[]>(`${this.server}events`)
+            .pipe(catchError(this.handleError<IEvent[]>('getEvents', [])))
     }
 
     getEvent(id: number):IEvent {
@@ -54,7 +66,7 @@ const EVENTS: IEvent[] = [
     {
         id: 1,
         name: 'Angular Connect',
-        date: new Date('9/26/2036'),
+        date: '9/26/2036',
         time: '10:00 am',
         price: 599.99,
         imageUrl: '/assets/images/angularconnect-shield.png',
@@ -132,7 +144,7 @@ const EVENTS: IEvent[] = [
     {
         id: 2,
         name: 'ng-nl',
-        date: new Date('4/15/2037'),
+        date: '4/15/2037',
         time: '9:00 am',
         price: 950.00,
         imageUrl: '/assets/images/ng-nl.png',
@@ -188,7 +200,7 @@ const EVENTS: IEvent[] = [
     {
         id: 3,
         name: 'ng-conf 2037',
-        date: new Date('5/4/2037'),
+        date: '5/4/2037',
         time: '9:00 am',
         price: 759.00,
         imageUrl: '/assets/images/ng-conf.png',
@@ -270,7 +282,7 @@ const EVENTS: IEvent[] = [
     {
         id: 4,
         name: 'UN Angular Summit',
-        date: new Date('6/10/2037'),
+        date: '6/10/2037',
         time: '8:00 am',
         price: 800.00,
         imageUrl: '/assets/images/basic-shield.png',
@@ -319,7 +331,7 @@ const EVENTS: IEvent[] = [
     {
         id: 5,
         name: 'ng-vegas',
-        date: new Date('2/10/2037'),
+        date: '2/10/2037',
         time: '9:00 am',
         price: 400.00,
         imageUrl: '/assets/images/ng-vegas.png',
