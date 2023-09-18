@@ -9,7 +9,9 @@ import {
   EventRouteActivator,
   EventListResolver,
   CreateSessionComponent,
-  SessionListComponent
+  SessionListComponent,
+  UpvoteComponent,
+  VoterService
 } from './events/index';
 import { NavBarComponent } from './nav/navbar.component';
 import { IToastr, TOASTR_TOKEN, JQ_TOKEN, CollapsibleWellComponent, SimpleModalComponent, ModalTriggerDirective } from './common/index';
@@ -44,10 +46,12 @@ let jQuery = (window as any)['$']
     CollapsibleWellComponent,
     DurationPipe,
     SimpleModalComponent,
+    UpvoteComponent,
     ModalTriggerDirective
   ],
   providers: [
     EventService,
+    VoterService,
     { provide: TOASTR_TOKEN, useValue: toastr},
     { provide: JQ_TOKEN, useValue: jQuery },
     EventRouteActivator,
