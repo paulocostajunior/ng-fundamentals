@@ -6,13 +6,13 @@ import {
   EventDetailsComponent,
   EventService,
   CreateEventComponent,
-  EventRouteActivator,
   EventListResolver,
   CreateSessionComponent,
   SessionListComponent,
   UpvoteComponent,
   VoterService,
-  LocationValidator
+  LocationValidator,
+  EventResolver
 } from './events/index';
 import { NavBarComponent } from './nav/navbar.component';
 import { IToastr, TOASTR_TOKEN, JQ_TOKEN, CollapsibleWellComponent, SimpleModalComponent, ModalTriggerDirective } from './common/index';
@@ -58,7 +58,7 @@ let jQuery = (window as any)['$']
     VoterService,
     { provide: TOASTR_TOKEN, useValue: toastr},
     { provide: JQ_TOKEN, useValue: jQuery },
-    EventRouteActivator,
+    EventResolver,
     AuthService,
     {
       provide: 'canDeactivateCreateEvent',

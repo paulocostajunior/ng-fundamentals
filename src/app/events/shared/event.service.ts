@@ -22,8 +22,9 @@ export class EventService {
             .pipe(catchError(this.handleError<IEvent[]>('getEvents', [])))
     }
 
-    getEvent(id: number):IEvent {
-        return EVENTS.find(f => f.id === id)!
+    getEvent(id: number):Observable<IEvent> {
+        return this.http.get<IEvent>(`${this.server}events/` + id)
+            .pipe(catchError(this.handleError<IEvent>('getEvents')))
     }
 
     saveEvent(event: any) {
