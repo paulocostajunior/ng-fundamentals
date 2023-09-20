@@ -1,11 +1,11 @@
 import { EventEmitter, Injectable } from "@angular/core"
 import { Observable, Subject, catchError, of } from "rxjs"
 import { IEvent, ISession } from "./event.model";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Injectable()
 export class EventService {
-    private server = "http://localhost:3000/api/"
+    private server = "http://localhost:3000/api"
 
     constructor(private http: HttpClient) {}
 
@@ -18,19 +18,19 @@ export class EventService {
     }
 
     getEvents():Observable<IEvent[]> {
-        return this.http.get<IEvent[]>(`${this.server}events`)
+        return this.http.get<IEvent[]>(`${this.server}/events`)
             .pipe(catchError(this.handleError<IEvent[]>('getEvents', [])))
     }
 
     getEvent(id: number):Observable<IEvent> {
-        return this.http.get<IEvent>(`${this.server}events/` + id)
+        return this.http.get<IEvent>(`${this.server}/events/` + id)
             .pipe(catchError(this.handleError<IEvent>('getEvents')))
     }
 
     saveEvent(event: any) {
-        event.id = 999
-        event.sessions = []
-        EVENTS.push(event)
+        let options = { headers: new HttpHeaders({'Content-Type': 'application/json'}) }
+        return this.http.post<IEvent>(`${this.server}/events`, event, options)
+            .pipe(catchError(this.handleError<IEvent>('saveEvent')))
     }
 
     updateEvent(event:IEvent) {
