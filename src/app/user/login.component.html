@@ -23,4 +23,6 @@
     <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
     <button [routerLink]="['/events']" type="button" class="btn btn-default">Cancel</button>
   </form>
+
+  <div *ngIf="loginInvalid" class="alert alert-danger">Invalid login info</div>
 </div>
