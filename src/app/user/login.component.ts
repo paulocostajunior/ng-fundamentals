@@ -18,13 +18,12 @@ export class LoginComponent {
     login(formValues: any) {
         this.authService.loginUser(formValues.userName, formValues.password)
             .subscribe(resp => {
+                console.log(resp)
                 if(!resp) {
                     this.loginInvalid = true
                 } else {
                     this.router.navigate(['events'])
                 }
             })
-
-        this.router.navigate(['events'])
     }
 }

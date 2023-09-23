@@ -1,0 +1,8 @@
+{
+    "authenticatedUsers": [
+        {
+            "userId": 1,
+            "isLogged": true
+        }
+    ]
+}

@@ -24,7 +24,7 @@ export class EventService {
 
     getEvent(id: number):Observable<IEvent> {
         return this.http.get<IEvent>(`${this.server}/events/` + id)
-            .pipe(catchError(this.handleError<IEvent>('getEvents')))
+            .pipe(catchError(this.handleError<IEvent>('getEvent')))
     }
 
     saveEvent(event: any) {

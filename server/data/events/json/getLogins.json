@@ -1,0 +1,12 @@
+{
+    "logins": [
+        {
+            "id": 1,
+            "firstName": "Paulo",
+            "lastName": "Costa",
+            "userName": "PauloCosta",
+            "password": "12345",
+            "isLogged": "true"
+        }
+    ]
+}

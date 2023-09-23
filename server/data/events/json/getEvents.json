@@ -312,18 +312,6 @@
           ]
         }
       ]
-    },
-    {
-      "name": "Evento Bae",
-      "date": "19-02-2024",
-      "time": "12:00",
-      "price": "12",
-      "address": "location",
-      "city": "city",
-      "country": "Lisbon",
-      "onlineUrl": "293u21903",
-      "imageUrl": "https://google.com/jpg",
-      "id": 6
     }
   ]
 }

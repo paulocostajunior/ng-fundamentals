@@ -2,5 +2,7 @@ export interface IUser {
     id: number,
     firstName: string,
     lastName: string,
-    userName: string
+    userName: string,
+    password: string,
+    isLogged: boolean
 }
