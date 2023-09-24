@@ -47,6 +47,7 @@ const dataFilePath = path.join(__dirname, 'data', 'events', 'json','getEvents.js
 const loginsDataFilePath = path.join(__dirname, 'data', 'events', 'json','getLogins.json'); 
 
 server.get('/api/events', (req, res, next) => {
+    console.log(data.getEvents)
     res.status(200).send(data.getEvents)
 })
 
@@ -108,7 +109,7 @@ server.put('/api/login/update', authenticateToken, (req, res) => {
 
   fs.writeFileSync(loginsDataFilePath, JSON.stringify(data.getLogins, null, 2));
 
-  res.json({ message: 'User information updated successfully' });
+  res.json({ message: 'User information updated successfully', user });
 });
 
 // Logout route

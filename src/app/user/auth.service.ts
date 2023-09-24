@@ -40,8 +40,14 @@ export class AuthService {
             Authorization: `Bearer ${token}`,
         };
 
-        return this.http.put<IUser>(`${this.server}/login/update`, body, { headers })
-        
+        return this.http.put<any>(`${this.server}/login/update`, body, { headers })
+            .pipe(tap(data => {
+                localStorage.removeItem('user')
+                this.setUser(data.user)
+            }))
+            .pipe(catchError(err => {
+                return of(false)
+            }))
     }
 
     logout() {
@@ -55,7 +61,6 @@ export class AuthService {
 
     getUser(): IUser {
         const userString = localStorage.getItem('user');
-        console.log(userString)
         return userString ? JSON.parse(userString) : null;
       }
 }
