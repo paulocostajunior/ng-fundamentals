@@ -37,13 +37,13 @@ export class ProfileComponent implements OnInit{
   }
 
   cancel() {
-    this.router.navigate(['events'])
+    this.router.navigate(['/events'])
   }
 
   saveProfile(formValues:any) {
     if (this.profileForm.valid) {
       this.auth.updateCurrentUser(formValues.firstName, formValues.lastName)
-        .subscribe((data) => {
+        .subscribe(() => {
           this.toastr.success('Profile saved')
         })
     }

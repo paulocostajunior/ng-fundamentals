@@ -50,9 +50,6 @@
       <img [src]="imageUrl?.value"
       *ngIf="imageUrl?.valid"/>
     </div>
-    <div class="">
-      {{newEventForm.valid}}
-    </div>
     <button type="submit" [disabled]="newEventForm.invalid" class="btn btn-primary">Save</button>
     <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
   </form>
