@@ -31,23 +31,18 @@ export class AuthService {
         return !!localStorage.getItem('accessToken');
     }
 
-    updateCurrentUser(firstName:string, lastName:string):Observable<IUser>{
-        this.currentUser!.firstName = firstName
-        this.currentUser!.lastName = lastName
+    updateCurrentUser(firstName:string, lastName:string):Observable<any> {
+        const body = { firstName, lastName };
+        const token = localStorage.getItem('accessToken');
 
-        return this.http.put<IUser>(`/api/users/${this.currentUser!.id}`, this.currentUser, this.options)
+        const headers = {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        };
+
+        return this.http.put<IUser>(`${this.server}/login/update`, body, { headers })
+        
     }
-
-    // checkAuthenticationStatus() {
-    //     console.log(this.currentUser?.firstName + ' lala')
-    //     // this.http.get('api/currentIdentity')
-    //     //     .pipe(tap(data => {
-    //     //         if(data instanceof Object) {
-    //     //             this.currentUser = <IUser>data
-    //     //         }
-    //     //     }))
-    //     //     .subscribe()
-    // }
 
     logout() {
         localStorage.removeItem('accessToken');
@@ -60,6 +55,7 @@ export class AuthService {
 
     getUser(): IUser {
         const userString = localStorage.getItem('user');
+        console.log(userString)
         return userString ? JSON.parse(userString) : null;
       }
 }

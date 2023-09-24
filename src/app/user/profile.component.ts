@@ -43,8 +43,9 @@ export class ProfileComponent implements OnInit{
   saveProfile(formValues:any) {
     if (this.profileForm.valid) {
       this.auth.updateCurrentUser(formValues.firstName, formValues.lastName)
-        .subscribe(() => {
+        .subscribe((data) => {
           this.toastr.success('Profile saved')
+          this.auth.currentUser = data.user
         })
     }
   }
