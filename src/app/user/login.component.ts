@@ -22,7 +22,7 @@ export class LoginComponent {
                 if(!resp) {
                     this.loginInvalid = true
                 } else {
-                    this.router.navigate(['events'])
+                    this.router.navigate(['/events'])
                 }
             })
     }

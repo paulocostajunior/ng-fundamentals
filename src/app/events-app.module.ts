@@ -24,6 +24,7 @@ import { AuthService } from './user/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DurationPipe } from './events/shared/duration.pipe';
 import { HttpClientModule} from '@angular/common/http'
+import { UserResolver } from './user/user-resolver.service';
 
 let toastr: IToastr = (window as any)['toastr'];
 let jQuery = (window as any)['$']
@@ -59,6 +60,7 @@ let jQuery = (window as any)['$']
     { provide: TOASTR_TOKEN, useValue: toastr},
     { provide: JQ_TOKEN, useValue: jQuery },
     EventResolver,
+    UserResolver,
     AuthService,
     {
       provide: 'canDeactivateCreateEvent',

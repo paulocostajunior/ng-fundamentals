@@ -17,25 +17,13 @@ import { IUser } from "../user/user.model";
 export class NavBarComponent {
     searchTerm: string = ""
     foundSessions?: ISession[]
-    userData?:IUser
 
     constructor(public auth: AuthService, private eventService: EventService) {}
-
-    ngOnInit ()
-    {
-        if (this.auth.isAuthenticated()) {
-            this.userData = this.auth.getUser()
-        }
-    }
 
     searchSessions(searchTerm: string) {
         this.eventService.searchSessions(searchTerm).subscribe
             (sessions => { 
                 this.foundSessions = sessions
             })
-    }
-
-    getUserName() {
-        return this.userData?.firstName
     }
 }

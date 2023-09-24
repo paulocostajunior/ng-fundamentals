@@ -7,10 +7,11 @@ import {
     CreateSessionComponent,
     EventResolver
 } from './events/index';
+import { UserResolver } from "./user/user-resolver.service";
 
 export const appRoutes: Routes = [
     { path: 'events/new', component: CreateEventComponent, canDeactivate: ['canDeactivateCreateEvent'] },
-    { path: 'events', component: EventsListAppComponent, resolve: { events: EventListResolver } },
+    { path: 'events', component: EventsListAppComponent, resolve: { events: EventListResolver, UserResolver } },
     { path: 'events/session/new', component: CreateSessionComponent },
     { path: 'events/:id', component: EventDetailsComponent, resolve: { event: EventResolver} },
     { path: '404', component: Error404Component },

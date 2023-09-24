@@ -19,6 +19,7 @@ export class AuthService {
         return this.http.post<ILoginRequest>(`${this.server}/login`, loginInfo, this.options)
             .pipe(tap(data => {
                 localStorage.setItem('accessToken', data.accessToken);
+                this.currentUser = data.user
                 this.setUser(data.user)
             }))
             .pipe(catchError(err => {
@@ -50,7 +51,7 @@ export class AuthService {
 
     logout() {
         localStorage.removeItem('accessToken');
-        this.router.navigate(['/login']);
+        this.router.navigate(['/events']);
     }
 
     setUser(user: IUser) {
